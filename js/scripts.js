@@ -32,10 +32,6 @@ var validateWordForm = function(input){
   return input;
 }
 
-var validateWordForm2 = function(input){
-
-}
-
 var validatePalindromeForm = function(arg){
   if(arg.toLowerCase() === arg.toLowerCase().split("").reverse().join("")) {
     return true;
