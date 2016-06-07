@@ -26,16 +26,13 @@ var puzzleoutput;
 
 var validateWordForm = function(input){
   var vowels = ["a", "e", "i", "o", "u"];
-  var inputarr = input.split("");
-
-  for(var i = 0; i < inputarr.length; i++){
-    for(var vi = 0; vi < vowels.length; vi++){
-      if(inputarr[i] === vowels[vi]){
-        inputarr[i] = "_";
-      }
-    }
+  for(i = 0; i < vowels.length; i++){
+    input = input.split(vowels[i]).join("-");
   }
-  return inputarr;
+  return input;
+}
+
+var validateWordForm2 = function(input){
 
 }
 
@@ -75,7 +72,6 @@ var sieve = function(maxnum){
   var result = [];
   // loop through and create our array of numbers
   for(var i = 0; i <= maxnum; i++){
-    // trickery - first two values are 0 to preserve matching index/values
     if(i > 1){
       numArr[i] = true;
     }
@@ -110,7 +106,6 @@ var fibonacci = function(maxnum){
 };
 
 
-
 //display logic
 $(function(){
   $("#countup").submit(function(event){
@@ -129,7 +124,7 @@ $(function(){
    event.preventDefault();
    $("#puzzle").hide();
    stringinput = $("#wordp").val();
-    $(".result").text(validateWordForm(stringinput).join(""));
+    $(".result").text(validateWordForm(stringinput));
   });
 
   $("#factorialform").submit(function(event){
