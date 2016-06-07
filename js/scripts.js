@@ -94,12 +94,22 @@ var sieve = function(maxnum){
       result.push(i);
     }
   }
-
-
-
-  console.log(numArr);
   return result;
 }
+
+var fibonacci = function(maxnum){
+  var fib = [];
+  fib[0] = 0;
+  fib[1] = 1;
+  fib[2] = 1;
+  for(i=3; i<=maxnum; i++){
+    fib[i] = fib[i-2] + fib[i-1];
+  }
+
+  return fib;
+};
+
+
 
 //display logic
 $(function(){
@@ -126,6 +136,7 @@ $(function(){
    event.preventDefault();
    $(".result").text(factorial($("#num").val()));
   });
+
   $("#palindrome").submit(function(event){
    event.preventDefault();
    if(validatePalindromeForm($("#palinput").val())){
@@ -137,7 +148,14 @@ $(function(){
 
   $("#prime").submit(function(event){
     event.preventDefault();
-    $(".result").text(sieve($("#primeinput").val()));
+    var results = sieve($("#primeinput").val());
+    $(".result").text(results);
+  })
+
+  $("#fibs").submit(function(event){
+    event.preventDefault();
+    var res =  fibonacci($('#countto').val());
+    res.forEach(renderShowCount);
   })
 
 });
